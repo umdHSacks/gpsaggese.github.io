@@ -1,0 +1,86 @@
+# Explainer
+
+This document explains the project in full: what each component does, why it is
+built the way it is, and what the results mean. The README covers how to build
+and run it. The code carries only the comments a reader cannot do without; the
+reasoning is here.
+
+Each section is written in the same session as the code it describes.
+
+## 1. Overview
+
+What the project does and what it finds, in a few paragraphs, for a reader who has
+not seen the code or the notebooks.
+
+## 2. Architecture
+
+How the files fit together: `download_data.py` writes the cache in `data/`;
+`networkx_utils.py` holds every function; `networkx.API.ipynb` teaches the library
+on small synthetic graphs; `networkx.example.ipynb` runs Project 1 on the cached
+data; `test/` checks the utils and the Docker build. Why logic lives in the utils
+and the notebooks only orchestrate.
+
+## 3. API reference
+
+The public functions of `networkx_utils.py`, grouped by section, one line each on
+what they take and return.
+
+## 4. Data
+
+Sources, how the sample of 100 tickers is drawn, the random seed, how tickers with
+incomplete history are handled, and the ticker format difference between the
+constituents list and the price source. Why the data is cached and committed
+rather than downloaded at run time.
+
+## 5. Graph construction
+
+Log returns, the correlation matrix, the top 10% link threshold and why that
+threshold, GICS sector as a node attribute, and the resulting graph statistics.
+
+## 6. The prediction problem
+
+How the year two graph defines labels, which pairs are candidates, the class
+balance that results, and why scores are computed on year one only.
+
+## 7. Link prediction scores and communities
+
+What each score measures and what structural assumption it encodes: Jaccard
+coefficient, Adamic-Adar index, preferential attachment. Then community
+detection, the NMI comparison against sectors, and the same-community flag as an
+additional score.
+
+## 8. Evaluation
+
+The three baselines and why each is there. Why both ROC-AUC and average precision
+are reported. What the numbers say, including the case where the correlation
+baseline wins.
+
+## 9. Visualization
+
+What the figure shows, the encoding choices for color and size, and what it shows
+that the numbers do not.
+
+## 10. Library comparison
+
+The igraph and SNAP comparison: the algorithm chosen, graph sizes, how time and
+memory were measured, the results, and any installation problem and the
+substitute used.
+
+## 11. Use of the course skills
+
+Required by the project description. One entry per use, logged when it happens:
+the skill (`notebook.*`, `coding.*`, `docker.*`, `readme_dir.*`, or an
+instruction-file run), what it produced, and what I reviewed, changed, or
+rejected by hand.
+
+| Date | Skill | Applied to | What it produced | What I changed |
+| --- | --- | --- | --- | --- |
+
+## 12. Design decisions and trade-offs
+
+The choices I would be asked to defend in review, each with the alternatives I
+considered and why I rejected them.
+
+## 13. Limitations
+
+What this project does not establish, and what would be needed to establish it.
