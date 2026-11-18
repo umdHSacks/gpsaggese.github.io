@@ -6,5 +6,5 @@ venv/
 .pytest_cache/
 .ruff_cache/
 .DS_Store
-docker_build.version.log
+*.log
 data/raw/
