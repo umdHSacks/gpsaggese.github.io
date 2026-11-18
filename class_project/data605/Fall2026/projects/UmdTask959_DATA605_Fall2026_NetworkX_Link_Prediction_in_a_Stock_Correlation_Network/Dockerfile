@@ -30,6 +30,10 @@ RUN pip install --upgrade pip && \
 COPY etc_sudoers /install/
 COPY etc_sudoers /etc/sudoers
 COPY bashrc /root/.bashrc
+# The container runs as root over the repo mounted at /git_root, which is owned
+# by the host user, so git refuses to run there ("dubious ownership"). Trust
+# that one path so `hintros.print_obj_info()` can call git to link the code.
+RUN git config --global --add safe.directory /git_root
 
 # Report package versions.
 COPY version.sh /install/
